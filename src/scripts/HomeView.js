@@ -97,7 +97,6 @@ const TaskList = React.createClass({
 const Task = React.createClass({
     _killTask: function() {
         this.props.taskModel.destroy()
-        this.props.taskModel.delete()
         
     },
 
@@ -129,15 +128,6 @@ const Task = React.createClass({
     },
 
     render: function() {
-        console.log(this.props.taskModel)
-
-        if (this.props.taskModel.get('done')) {
-            var inputJsx = <input checked="true" type='checkbox' onChange={this._doFunc}/>
-        }
-        else {
-            var inputJsx = <input type='checkbox' onChange={this._doFunc}/>
-        }
-
         return (
             <div className="task">
                 <span className="name">{this.props.taskModel.get('name')}
