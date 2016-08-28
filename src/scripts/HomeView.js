@@ -4,6 +4,7 @@ import TaskAdder from './TaskAdder'
 import DoneList from './DoneList'
 import UndoneList from './UndoneList'
 import {TaskModel} from './models.js'
+import $ from 'jquery'
 
 const HomeView = React.createClass({
     getInitialState: function(){
@@ -95,9 +96,10 @@ const TaskList = React.createClass({
 })
 
 const Task = React.createClass({
-    _killTask: function() {
-        this.props.taskModel.destroy()
-        
+    _killTask: function() { 
+        this.props.taskModel.destroy({
+            url: `/api/tasks/${this.props.taskModel.id}`        
+        })    
     },
 
     _addDescription: function(e){
